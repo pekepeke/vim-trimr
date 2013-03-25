@@ -9,8 +9,8 @@ let s:save_cpo = &cpo
 set cpo&vim
 
 " var
-" ext(default), ignore, filetype, ignore_filetype
-let g:trimr_method = get(g:, 'trimr_method', 'ext')
+" extension(default), ignore_extension, filetype, ignore_filetype
+let g:trimr_method = get(g:, 'trimr_method', 'extension')
 let g:trimr_targets = get(g:, 'trimr_targets', [])
 let g:trimr_removecr = get(g:, 'trimr_removecr', 0)
 

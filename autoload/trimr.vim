@@ -21,7 +21,7 @@ function! s:is_target(ext)
     let search = &filetype
   endif
   let found = len(filter(t, 'v:val =~# search')) > 0
-  if m == 'ignore_exts' || m == 'ignore_filetype'
+  if m == 'ignore_extension' || m == 'ignore_filetype'
     return !found
   endif
   return found
