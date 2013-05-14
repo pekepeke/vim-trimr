@@ -2,14 +2,29 @@ let s:save_cpo = &cpo
 set cpo&vim
 
 function! trimr#exec()
+  let pos = getpos('.')
+  silent execute '%s/\s\+$//e'
+  if g:trimr_removecr
+    silent execute '%s/\r$//e'
+  endif
+  call setpos('.', pos)
+endfunction
+
+function! trimr#autocmd_exec()
+  if !get(g:, 'trimr_enable', 1) || !get(b:, 'trimr_enable', 1)
+    return
+  endif
   let ext = expand('%:p:e')
   if s:is_target(ext)
-    let pos = getpos('.')
-    silent execute '%s/\s\+$//e'
-    if g:trimr_removecr
-      silent execute '%s/\r$//e'
-    endif
-    call setpos('.', pos)
+    call trimr#exec()
+  endif
+endfunction
+
+function! trimr#enable(flag, bang)
+  if strlen(a:bang)
+    let g:trimr_enable = a:flag
+  else
+    let b:trimr_enable = a:flag
   endif
 endfunction
 

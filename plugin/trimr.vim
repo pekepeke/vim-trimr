@@ -16,8 +16,12 @@ let g:trimr_removecr = get(g:, 'trimr_removecr', 0)
 
 augroup trimr-augroup
   autocmd!
-  autocmd BufWritePre * call trimr#exec()
+  autocmd BufWritePre * call trimr#autocmd_exec()
 augroup END
+
+command! -nargs=0 Trimr call trimr#exec()
+command! -bang -nargs=0 TrimrOn call trimr#enable(1, "<bang>")
+command! -bang -nargs=0 TrimrOff call trimr#enable(0, "<bang>")
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
