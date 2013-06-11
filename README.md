@@ -1,9 +1,9 @@
 vim-trimr
 =========
 
-trim trailing white space
+remove trailing white space
 
-Version: 0.0.1  
+Version: 0.0.2  
 OriginalAuthor: acustodioo <http://github.com/acustodioo>  
 Author : pekepeke <pekepekesamurai+vim@gmail.com>  
 License: MIT <http://www.gnu.org/licenses/gpl.html>
@@ -25,7 +25,7 @@ License: MIT <http://www.gnu.org/licenses/gpl.html>
 
 ## INTRODUCTION
 
-*vim-trimr* is a Vim plugin to provide trim trailing white space
+*vim-trimr* is a Vim plugin to provide remove trailing white space
 on |BufSavePre|
 
 Latest version:
@@ -36,36 +36,48 @@ Latest version:
 
 #### g:trimr_method
 
-|g:trimr_method| specify how to trim trailing white space (default:exts).
+|g:trimr_method| specify how to remove trailing white space (default:exts).
 Available parameters are `filetype`, `ignore_filetype`, `extension` and `ignore_extension`
 
 #### g:trimr_targets
 
-|g:trimr_targets| specify the target to trim trailing white space (default:[])
+|g:trimr_targets| specify the target to remove trailing white space (default:[])
 
 #### g:trimr_removecr
 
 |g:trimr_removecr| specify whether to remove cr (default:0)
 
+#### g:trimr_save_disable_state
+
+Save |:TrimrOn|/|:TrimrOff| state.
+
+#### g:trimr_save_disable_state_path
+
+The path for storing the state.
+
 ### COMMANDS
 
 #### :Trimr
 
-trim trailing white spaces from current buffer.
+remove trailing white spaces from current buffer or selected range.
 
 #### :TrimrOn
 
-enable auto trim trailing white spaces on |BufSavePre|.(buffer scope)
+enable auto remove trailing white spaces on |BufSavePre|.(buffer scope)
 
 #### :TrimrOn!
 
-enable auto trim trailing white spaces on |BufSavePre|.(global scope)
+enable auto remove trailing white spaces on |BufSavePre|.(global scope)
 
 #### :TrimrOff
 
-disable auto trim trailing white spaces on |BufSavePre|.(local scope)
+disable auto remove trailing white spaces on |BufSavePre|.(local scope)
 
 #### :TrimrOff!
 
-disable auto trim trailing white spaces on |BufSavePre|.(global scope)
+disable auto remove trailing white spaces on |BufSavePre|.(global scope)
+
+#### :TrimrState
+
+show disabled files that is not removed trailing white spaces automatically.
 
