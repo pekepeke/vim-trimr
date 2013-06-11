@@ -4,7 +4,6 @@ vim-trimr
 remove trailing white space
 
 Version: 0.0.2  
-OriginalAuthor: acustodioo <http://github.com/acustodioo>  
 Author : pekepeke <pekepekesamurai+vim@gmail.com>  
 License: MIT <http://www.gnu.org/licenses/gpl.html>
 	Permission is hereby granted, free of charge, to any person obtaining a copy  
