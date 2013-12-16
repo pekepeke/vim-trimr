@@ -7,14 +7,18 @@ endif
 
 function! trimr#exec()
   let pos = getpos('.')
+  let kwd = @/
   silent execute '%' . s:get_re()
+  let @/ = kwd
   call setpos('.', pos)
 endfunction
 
 function! trimr#from_to(l1, l2)
-    let l:save_cursor = getpos(".")
-    silent! execute ':' . a:l1 . ',' . a:l2 . s:get_re()
-    call setpos('.', l:save_cursor)
+  let l:save_cursor = getpos(".")
+  let kwd = @/
+  silent! execute ':' . a:l1 . ',' . a:l2 . s:get_re()
+  let @/ = kwd
+  call setpos('.', l:save_cursor)
 endfunction
 
 function! s:get_re()
