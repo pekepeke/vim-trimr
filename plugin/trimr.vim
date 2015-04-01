@@ -11,6 +11,7 @@ set cpo&vim
 " var
 " extension(default), ignore_extension, filetype, ignore_filetype
 let g:trimr_method = get(g:, 'trimr_method', 'extension')
+let g:trimr_prefer_editorconfig = get(g:, 'trimr_prefer_editorconfig', 1)
 let g:trimr_targets = get(g:, 'trimr_targets', [])
 let g:trimr_removecr = get(g:, 'trimr_removecr', 0)
 let g:trimr_save_disable_state = get(g:, 'trimr_save_disable_state', 1)

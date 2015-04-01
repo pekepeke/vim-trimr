@@ -35,10 +35,25 @@ function! trimr#autocmd_exec()
   if !s:is_target_path(expand('%:p'))
     return
   endif
+  if trimr#prefer_editorconfig()
+    return
+  endif
 
   if s:is_target_ext(expand('%:p:e'))
     call trimr#exec()
   endif
+endfunction
+
+function! trimr#prefer_editorconfig()
+  if !g:trimr_prefer_editorconfig || !exists(':EditorConfigReload')
+    return 0
+  endif
+  let cdir = expand('%:p:h')
+  if !isdirectory(cdir)
+    return 0
+  endif
+  let f = findfile(".editorconfig", cdir . ";")
+  return !empty(f)
 endfunction
 
 function! trimr#enable(flag, bang)
