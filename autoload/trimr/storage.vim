@@ -8,13 +8,13 @@ function! trimr#storage#new()
 endfunction
 
 function! s:storage.new()
-  return extend({}, self)
+  return extend({}, deepcopy(self))
 endfunction
 
 function! s:storage.load()
   if filereadable(g:trimr_save_disable_state_path)
-    let self.data = readfile(g:trimr_save_disable_state_path)
-    for name in self.data
+    let data = readfile(g:trimr_save_disable_state_path)
+    for name in data
       let self.hash[name] = 1
     endfor
   endif
@@ -30,6 +30,9 @@ function! s:storage.init()
 endfunction
 
 function! s:storage.save()
+  if empty(self.hash)
+    return self
+  endif
   call writefile(keys(self.hash), g:trimr_save_disable_state_path)
   return self
 endfunction
